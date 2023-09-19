@@ -1,0 +1,241 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/jquery.number.min.js"></script>
+
+<div class="visual">
+	<div class="header">
+		<div class="header_top">
+			<a href="../main/main.html"><img class="logo" src="../img/logo.png"></a>
+
+			<ul class="nav">
+				<li><a href="../sub01/trading_buy.html">Stock<br>Exchange</a></li>
+				<li><a href="../sub03/krwdeposit.html">Deposit and<br>Withdrawal</a></li>
+				<li><a href="../sub04/sub09.html">Asset<br>management</a></li>
+				<li><a href="../sub04/sub01.html">Security<br>Setting</a></li>
+				<li><a href="../sub05/board01_list.html?Sub_No=1">Service<br>Center</a></li>
+			</ul>
+		<?
+$query = "SELECT m_name FROM $member WHERE m_id='$userid'";
+$result = mysql_query($query,$dbconn);
+$row = mysql_fetch_row($result);
+$m_name = $row[0];
+?>
+
+		<div class="nav_btn">
+
+			<?}?>
+			<div class="nav_btn">
+<?if($_SESSION["userid"] !=""){?>
+			<a href="#" style="cursor:default;"><span style="color:#203670;font-weight:bold;"><?=$m_name?></span> 님</a>
+<?}?>
+			<?if($_SESSION["userid"] ==""){?>
+				<a href="../sub04/login.html">Login</a>
+				<a href="../sub04/join.html">Register</a>
+			<?}else{?>
+			
+				<a href="../sub04/sub01.html">My Page</a>
+				<a href="../sub04/logout.php">Logout</a>
+			<?}?>
+			</div>
+		</div>
+
+		<div class="lnb">
+			<div class="lnb_inner">
+				<ul>
+					<li><a href="../sub01/trading_buy.html">Purchase</a></li>
+					<li><a href="../sub01/trading_sell.html">Sell</a></li>
+				</ul>
+				<ul>
+					<li><a href="../sub03/krwdeposit.html">Deposit</a></li>
+					<li><a href="../sub03/krwwithdraw.html">Withdrawal</a></li>
+					<li><a href="../sub03/sub04.html">Bank Statement</a></li>
+				</ul>
+				<ul>
+					<li><a href="../sub04/sub09.html">Asset Status</a></li>
+					<li><a href="../sub01/sub01.html">Fee guidance</a></li>
+					<li><a href="../sub01/dealmost.html">Transaction details</a></li>
+						
+				</ul>
+				<ul>
+					<li><a href="../sub04/sub01.html">Edit Profile</a></li>
+					<li><a href="../sub04/sub02.html">Activation Center</a></li>
+					<li><a href="../sub04/sub04.html">Connection Information</a></li>
+				</ul>
+				<ul>
+					<li><a href="../sub05/board01_list.html?Sub_No=1">Notice</a></li>
+					<li><a href="../sub05/board01_list.html?Sub_No=2">Personal inquiry</a></li>
+					<li><a href="../sub05/board01_list.html?Sub_No=4">User Guide</a></li>
+					<li><a href="../sub05/board01_list.html?Sub_No=5">FQAs</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+		<p class="visual_title01">Smart Crypto-Currency Exchange,</p>
+		<p class="visual_title02"><span class="c_y">ABA</span> EXCHANGE</p>
+		<div class="visual_title03">A safer, faster and easier virtual currency exchange <span class="c_y">ABA</span> EXCHANGE</div>
+</div>
+
+<div class="m_header">
+	<div class="m_header_inner">
+		<div class="m_logo">
+			<a href="../main/main.html"><img src="../img/logo.png" alt="logo"></a>
+		</div>
+
+		<div id="gnb_btn">
+			<img src="../img/gnb.png" alt="menu">
+		</div>
+	</div>
+
+	<div id="gnb">
+		<div class="gnb_inner">
+			
+			<div class="click_logo_box">
+				<ul>
+					<?if($_SESSION["userid"] ==""){?>
+								<li class="gnb_btn"><a href="../sub04/login.html">Login</a></li>
+								<li class="gnb_btn"><a href="../sub04/join.html">Register</a></li>
+					<?}else{?>
+						<li class="gnb_btn"><a href="../sub04/sub01.html">My Page</a></li>
+						<li class="gnb_btn"><a href="../sub04/logout.php">Logout</a></li>
+					<?}?>
+				</ul>
+				<!-- <ul>
+					<li class="gnb_btn"><a href="../sub04/sub01.html">마이페이지</a></li>
+					<li  class="gnb_btn"><a href="../sub04/logout.php">로그아웃</a></li>
+				</ul> -->
+				<div id="close"><img src="../img/close.png"></div>
+			</div>
+
+			<div class="clear"></div>
+
+			<ul class="gnb_nav">
+				<li><a href="../sub01/trading_buy.html">Stock Exchange</a>
+					<ul class="gnb_sub_nav">
+						<li><a href="../sub01/trading_buy.html">Purchase</a></li>
+						<li><a href="../sub01/trading_sell.html">Sell</a></li>
+					</ul>
+				</li>
+
+				<li><a href="../sub03/krwdeposit.html">Deposit and Withdrawal</a>
+					<ul class="gnb_sub_nav">
+						<li><a href="../sub03/krwdeposit.html">Deposit</a></li>
+						<li><a href="../sub03/krwwithdraw.html">Withdrawal</a></li>
+						<li><a href="../sub03/sub04.html">Bank Statement</a></li>
+					</ul>
+				</li>
+
+				<li><a href="../sub01/dealmost.html">Asset management</a>
+					<ul class="gnb_sub_nav">						
+						<li><a href="../sub04/sub09.html">Current status of my assets</a></li>
+						<li><a href="../sub01/sub01.html">Fee guidance</a></li>
+						<li><a href="../sub01/dealmost.html">Transaction details</a></li>
+					</ul>
+				</li>
+
+				<li><a href="../sub04/sub09.html">Security Setting </a>
+					<ul class="gnb_sub_nav">
+						<li><a href="../sub04/sub01.html">Edit Profile</a></li>
+						<li><a href="../sub04/sub02.html">Activation Center</a></li>
+						<li><a href="../sub04/sub04.html">Connection Information</a></li>
+					</ul>
+				</li>
+				
+				<li><a href="../sub05/board01_list.html">Service Center</a>
+					<ul class="gnb_sub_nav">
+						<li><a href="../sub05/board01_list.html?Sub_No=1">Notice</a></li>
+						<li><a href="../sub05/board01_list.html?Sub_No=2">Personal inquiry</a></li>
+						<li><a href="../sub05/board01_list.html?Sub_No=4">User Guide</a></li>
+						<li><a href="../sub05/board01_list.html?Sub_No=5">FQAs</a></li>
+					</ul>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+</div>
+
+<script>
+
+function load_most()
+{
+	var url ="../include/recive_most.php";
+	mxr_load(url);
+}
+function load_mxr()
+{
+	var url ="../include/recive_mxr.php";
+	mxr_load(url);
+}
+function load_aba()
+{
+	var url ="../include/recive_aba.php";
+	mxr_load(url);
+}
+function load_eco()
+{
+	var url ="../include/recive_eco.php";
+	mxr_load(url);
+}
+function load_ebh()
+{
+	var url ="../include/recive_ebh.php";
+	mxr_load(url);
+}
+function mxr_load(_url){
+     httpRequest = getXMLHttpRequest();
+     httpRequest.open("GET", _url, true);
+     httpRequest.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT"); 
+     httpRequest.onreadystatechange = check_mxr_xml_ok;
+     httpRequest.send(null);
+}
+function check_mxr_xml_ok()
+{
+	
+	if(httpRequest.readyState == 4)
+	{
+		if(httpRequest.status == 200)
+		{
+//			console.log(httpRequest.responseText);
+			if(httpRequest.responseText != "")
+			{
+			}
+			else
+			{
+			}
+		}
+	}
+}
+
+function getXMLHttpRequest(){
+     if(window.ActiveXObject){
+        try{
+                return new ActiveXObject("Msxml2.XMLHTTP");
+        }catch(e){
+                try{
+                        return new ActiveXObject("Microsoft.XMLHTTP");
+                }catch(e1){
+                        return(null);
+                }
+        }
+     }else if(window.XMLHttpRequest){
+           return new XMLHttpRequest();
+     }else{
+           return null;
+     }
+}
+
+</script>
+<?php
+if($_SESSION["userid"] !=""){
+?>
+<script>
+load_most();
+load_aba();
+load_mxr();
+load_eco();
+load_ebh();
+</script>
+<?php
+
+}
+?>

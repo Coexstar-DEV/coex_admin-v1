@@ -1,0 +1,62 @@
+<div class="footer">
+	<div class="inner">
+		
+		<ul class="fnb">
+			<li><a href="../main/main.html"><img src="../img/f_logo.png"></a><li>
+			<li><a href="#">회사소개</a><li>
+			<li><a href="../sub06/sub01.html">이용약관</a><li>
+			<li><a href="../sub06/sub02.html">개인정보 처리방침</a><li>
+			<li><a href="../sub05/board01_list.html?Sub_No=2">1 : 1 문의</a><li>
+			<li><a href="../sub05/board01_write.html?Sub_No=3">개선사항</a><li>
+			
+		</ul>
+
+		<a class="m_f_logo" href="../main/main.html"><img src="../img/f_logo.png"></a>
+
+		<p class="copy">비트젯 주식회사 | 관리자 박노현 | 사업자등록번호 : 586-88-00934 | 본점 : 서울특별시 송파구 백제고분로 114, 6층<br>
+		상담센터 : 대전광역시 중구 대종로 603,2층 (선화동) | 고객센터 : 1522-0818 | 이메일 : bitzet@naver.com | 카카오톡 : 비트젯<br>
+		운영시간 : 월~금 오전 9시 ~ 18시 (주말/공휴일 제외) | 고객상담은 전화와 이메일로 진행하며, 보안규정상 방문 상담은 진행하지 않습니다.<br>
+		ⓒ 2018 bitzet all rights reserved.</p>
+
+		<div	class="f_text_wrap">
+			<p class="f_text01">고객센터 <span>1522-0818</span></p>
+			<p class="f_text02">운영시간 : 평일 09 ~ 18시<br>
+			점심시간 : 12 ~ 13시<br>
+			주말 및 공휴일 휴무<br><br>
+			이메일 : bitzet@naver.com</p>
+			
+		</div>
+			
+	</div>
+</div>
+
+
+<script>
+	$(document).ready(function(){
+		$("#gnb_btn").click(function(){
+			$("#gnb").animate({"right":"0px"},500);
+		});	
+		$("#close").click(function(){
+			$("#gnb").animate({"right":"-150%"},500);
+		});
+	});
+  $(document).ready(function() {
+    $(".nav").hover(
+      function() {
+        $(".lnb").stop().slideDown(300);
+      },
+      function() {
+        $(".lnb").stop().slideUp(300);
+      }
+    );
+
+    $(".lnb").hover(
+      function() {
+        $(".lnb").stop().slideDown(300);
+      },
+      function() {
+        $(".lnb").stop().slideUp(300);
+      }
+    );
+});
+</script>

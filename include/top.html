@@ -1,0 +1,359 @@
+<?php 	define("__CASTLE_PHP_VERSION_BASE_DIR__",$_SERVER[DOCUMENT_ROOT]."/castle-php");
+	include_once(__CASTLE_PHP_VERSION_BASE_DIR__."/castle_referee.php");
+
+$checks_hack  =  explode("?",$_SERVER['REQUEST_URI']);
+
+
+if ($checks_hack[1]  != "")  { exit;}
+
+if(isset($_SESSION["userid"])){
+	$m_ip1_c = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	$m_ip1_c = explode(",",$m_ip1_c);
+	$m_ip1_c = $m_ip1_c[0];
+	$query = "SELECT count(m_id) FROM $m_login where m_ip LIKE '$m_ip1_c%' and m_result='1' and m_id='$_SESSION[userid]' ";
+	$chk_ip = mysql_query($query,$dbconn);
+	$row_ip = mysql_fetch_row($chk_ip);
+	$id_chh= $row_ip[0];
+	if($id_chh <= 0){
+	//echo "<script>alert('정상적인 접근이 아닙니다. 관리자에게 문의해주세요');location.href='../include/logout.php';</script>";
+	//exit;
+	}else{
+	}
+	if(strpos($m_ip1_c, "124.217.210") !== false) {  
+	    exit;  
+	}
+}
+?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/jquery.number.min.js"></script>
+
+<style>	
+.nav li a{
+    width: 110px;
+}
+.lnb_inner ul:first-child{
+	margin-left:330px;
+}
+.lnb_inner ul li{
+	width:110px;
+}
+</style>
+
+<div class="header">
+	<div class="header_top">
+		<a href="../main/main.html"><img class="logo" src="../img/logo.png"></a>
+
+		<ul class="nav">
+			<li><a href="../main/main.html">홈</a></li>
+			<li><a href="../sub01/trading_buy.html">거래소</a></li>
+			<li><a href="../sub03/krwdeposit.html">입출금</a></li>
+			<li><a href="../sub04/sub09.html">자산관리</a></li>
+			<li><a href="../sub04/sub01.html">보안설정</a></li>
+			<li><a onclick ="alert('게시판 점검 중입니다.')" >고객센터</a></li>
+		</ul>
+		<?
+$query = "SELECT m_name FROM $member WHERE m_id='$userid'";
+$result = mysql_query($query,$dbconn);
+$row = mysql_fetch_row($result);
+$m_name = $row[0];
+?>
+
+		<div class="nav_btn">
+<?if($_SESSION["userid"] !=""){?>
+			<a href="#" style="cursor:default;"><span style="color:#203670;font-weight:bold;"><?=$m_name?></span> 님</a>
+<?}?>
+
+		<?if($_SESSION["userid"] ==""){?>
+			<a href="../sub04/join.html">회원가입</a>
+			<a href="../sub04/login.html">로그인</a>
+		<?}else{?>
+			<a href="../sub04/sub01.html">마이페이지</a>
+			<a href="../sub04/logout.php">로그아웃</a>
+		<?}?>
+		</div>
+	</div>
+
+	<div class="lnb">
+		<div class="lnb_inner">
+			<ul>
+				<li><a href="../sub01/trading_buy.html">구매</a></li>
+				<li><a href="../sub01/trading_sell.html">판매</a></li>
+			</ul>
+			<ul>
+				<li><a href="../sub03/krwdeposit.html">입금</a></li>
+				<li><a href="../sub03/krwwithdraw.html">출금</a></li>
+				<li><a href="../sub03/sub04.html">입출금내역</a></li>
+			</ul>
+			<ul>
+				<li><a href="../sub04/sub09.html">내자산현황</a></li>
+				<li><a href="../sub01/sub01.html">수수료안내</a></li>
+				<li><a href="../sub01/dealmost.html">거래내역</a></li>
+					
+			</ul>
+			<ul>
+
+				<li><a href="../sub04/sub01.html">회원정보변경</a></li>
+				<li><a href="../sub04/sub02.html">인증센터</a></li>
+				<li><a href="../sub04/sub04.html">접속정보</a></li>
+			</ul>
+			<ul>
+				<li onclick ="alert('게시판 점검 중입니다.')"><a >공지사항</a></li>
+				<li onclick ="alert('게시판 점검 중입니다.')"><a >1 : 1 문의</a></li>
+				<li onclick ="alert('게시판 점검 중입니다.')"><a >개선사항</a></li>
+				<li onclick ="alert('게시판 점검 중입니다.')"><a >자주하는질문</a></li>
+				<li onclick ="alert('게시판 점검 중입니다.')"><a>비트젯 뉴스</a></li>
+			</ul>
+		<?php
+				if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+			echo "<li><a href=\"../main/main_to_pc.html\">PC버전으로 보기</a></li>";
+} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') ||
+    strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+    echo "<li><a href=\"../main/main_to_pc.html\">PC버전으로 보기</a></li>";
+} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+    echo "<li><a href=\"../main/main_to_pc.html\">PC버전으로 보기</a></li>";
+} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+    echo "<li><a href=\"../main/main_to_pc.html\">PC버전으로 보기</a></li>";
+} else {
+    
+}
+
+
+				?>
+		</div>
+	</div>
+</div>
+
+<div class="m_header">
+	<div class="m_header_inner">
+		<div class="m_logo">
+			<a href="../main/main.html"><img src="../img/logo.png" alt="로고"></a>
+		</div>
+
+		<div id="gnb_btn">
+			<img src="../img/gnb.png" alt="메뉴버튼">
+		</div>
+	</div>
+
+	<div id="gnb">
+		<div class="gnb_inner">
+			
+			<div class="click_logo_box">
+				<ul>
+					<?if($_SESSION["userid"] ==""){?>
+								<li class="gnb_btn"><a href="../sub04/login.html">로그인</a></li>
+								<li class="gnb_btn"><a href="../sub04/join.html">회원가입</a></li>
+					<?}else{?>
+<?if($_SESSION["userid"] !=""){?>
+			<li class="gnb_btn"><a href="#" style="cursor:default;"><span style="color:#ffffff;font-weight:bold;"><?=$m_name?></span> 님</a></li>
+<?}?>
+						<!--<li class="gnb_btn"><a href="../sub04/sub01.html">마이페이지</a></li>-->
+						<li class="gnb_btn"><a href="../sub04/logout.php">로그아웃</a></li>
+					<?}?>
+				</ul>
+				<!-- <ul>
+					<li class="gnb_btn"><a href="../sub04/sub01.html">마이페이지</a></li>
+					<li  class="gnb_btn"><a href="../sub04/logout.php">로그아웃</a></li>
+				</ul> -->
+				<div id="close"><img src="../img/close.png"></div>
+			</div>
+
+			<div class="clear"></div>
+
+			<ul class="gnb_nav">
+				<li><a href="../sub01/trading_buy.html">거래소</a>
+					<ul class="gnb_sub_nav">
+						<li><a href="../sub01/trading_buy.html">구매</a></li>
+						<li><a href="../sub01/trading_sell.html">판매</a></li>
+					</ul>
+				</li>
+
+				<li><a href="../sub03/krwdeposit.html">입출금</a>
+					<ul class="gnb_sub_nav">
+						<li><a href="../sub03/krwdeposit.html">입금</a></li>
+						<li><a href="../sub03/krwwithdraw.html">출금</a></li>
+						<li><a href="../sub03/sub04.html">입출금내역</a></li>
+					</ul>
+				</li>
+
+				<li><a href="../sub04/sub09.html">자산관리</a>
+					<ul class="gnb_sub_nav">						
+						<li><a href="../sub04/sub09.html">내자산현황</a></li>
+						<li><a href="../sub01/sub01.html">수수료안내</a></li>
+						<li><a href="../sub01/dealmost.html">거래내역</a></li>
+					</ul>
+				</li>
+
+				<li><a href="../sub04/sub09.html">보안설정</a>
+					<ul class="gnb_sub_nav">
+						<li><a href="../sub04/sub01.html">회원정보변경</a></li>
+						<li><a href="../sub04/sub02.html">인증센터</a></li>
+						<li><a href="../sub04/sub04.html">접속정보</a></li>
+					</ul>
+				</li>
+				
+				<li onclick ="alert('게시판 점검 중입니다.')"><a >고객센터</a>
+					<ul class="gnb_sub_nav">
+						<li onclick ="alert('게시판 점검 중입니다.')"><a >공지사항</a></li>
+						<li onclick ="alert('게시판 점검 중입니다.')"><a >1 : 1 문의</a></li>
+						<li onclick ="alert('게시판 점검 중입니다.')"><a >개선사항</a></li>
+						<li onclick ="alert('게시판 점검 중입니다.')"><a >자주하는질문</a></li>
+						<li onclick ="alert('게시판 점검 중입니다.')"><a >비트젯 뉴스</a></li>
+					</ul>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+</div>
+
+<script>
+
+function load_most()
+{
+	var url ="../include/recive_most.php";
+	mxr_load(url);
+}
+function load_mxr()
+{
+	var url ="../include/recive_mxr.php";
+	mxr_load(url);
+}
+function load_aba()
+{
+	var url ="../include/recive_aba.php";
+	mxr_load(url);
+}
+function load_eco()
+{
+	var url ="../include/recive_eco.php";
+	mxr_load(url);
+}
+function load_ebh()
+{
+	var url ="../include/recive_ebh.php";
+	mxr_load(url);
+}
+function load_kc()
+{
+
+	var url ="../include/recive_kc.php";
+	mxr_load(url);
+}
+function load_btc()
+{
+
+	var url ="../include/recive_btc.php";
+	mxr_load(url);
+}
+function load_tams()
+{
+
+	var url ="../include/recive_tams.php";
+	mxr_load(url);
+}
+
+function load_dao()
+{
+
+	var url ="../include/recive_dao.php";
+	mxr_load(url);
+}
+function load_tgnc()
+{
+
+	var url ="../include/recive_tgnc.php";
+	mxr_load(url);
+}
+function load_rs()
+{
+
+	var url ="../include/recive_rs.php";
+	mxr_load(url);
+}
+function load_eth()
+{
+
+	var url ="../include/recive_eth.php";
+	mxr_load(url);
+}
+function load_diot()
+{
+
+	var url ="../include/recive_diot.php";
+	mxr_load(url);
+}
+function load_yo()
+{
+
+	var url ="../include/recive_yo.php";
+	mxr_load(url);
+}
+function mxr_load(_url){
+     httpRequest = getXMLHttpRequest();
+     httpRequest.open("GET", _url, true);
+     httpRequest.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT"); 
+     httpRequest.onreadystatechange = check_mxr_xml_ok;
+     httpRequest.send(null);
+}
+function check_mxr_xml_ok()
+{
+	
+	if(httpRequest.readyState == 4)
+	{
+		if(httpRequest.status == 200)
+		{
+//			console.log(httpRequest.responseText);
+			if(httpRequest.responseText != "")
+			{
+			}
+			else
+			{
+			}
+		}
+	}
+}
+
+function getXMLHttpRequest(){
+     if(window.ActiveXObject){
+        try{
+                return new ActiveXObject("Msxml2.XMLHTTP");
+        }catch(e){
+                try{
+                        return new ActiveXObject("Microsoft.XMLHTTP");
+                }catch(e1){
+                        return(null);
+                }
+        }
+     }else if(window.XMLHttpRequest){
+           return new XMLHttpRequest();
+     }else{
+           return null;
+     }
+}
+
+</script>
+<?php
+if($_SESSION["userid"] !=""){
+?>
+<script>
+load_most();
+load_aba();
+load_mxr();
+load_eco();
+load_ebh();
+load_kc();
+load_btc();
+load_tams();
+load_dao();
+load_tgnc();
+load_rs();
+load_eth();
+load_diot();
+load_yo();
+</script>
+<?php
+
+}
+?>
